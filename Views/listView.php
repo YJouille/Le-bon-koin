@@ -1,5 +1,7 @@
 <?php
 
+//page affichant la liste des annonces
+
 ob_start();
 // ob_start() démarre la temporisation de sortie. Tant qu'elle est enclenchée, aucune donnée, hormis les en-têtes, n'est envoyée au navigateur, mais temporairement mise en tampon.
 ?>

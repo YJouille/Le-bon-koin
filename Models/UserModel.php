@@ -29,8 +29,7 @@ class UserModel extends Database
         } else {
             echo 'Le mot de passe est invalide.';
         }
-    }
-     ///////////////gerer les erreurs autrement         
+    }    
     }
 
     
@@ -47,6 +46,9 @@ class UserModel extends Database
 
 	$query->execute();
     
+    }
+    public function getUserAnnonces(){
+
     }
 }
 
