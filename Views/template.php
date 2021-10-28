@@ -19,3 +19,15 @@
   <!-- CSS -->
   <link href="./assets/style.css" rel="stylesheet">
 </head>
+
+<body>
+<header>
+    
+</header>
+
+<footer class="footer">
+    copyright
+</footer>
+</body>
+
+

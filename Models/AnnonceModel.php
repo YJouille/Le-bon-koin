@@ -122,9 +122,8 @@ class AnnonceModel extends Database
         $query->execute();
         $annonces = array();
         while ($annonceId = $query->fetch(PDO::FETCH_ASSOC)) {
-            //$annonce = getAnnonce($annonceId); il y avait une erreur undifined function
 
-            $annonce = $this->getAnnonce($annonceId); //Verifier cette utilisation!!!
+            $annonce = $this->getAnnonce($annonceId); 
             array_push($annonces, $annonce);
         }
         return $annonces;

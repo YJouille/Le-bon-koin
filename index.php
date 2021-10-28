@@ -7,5 +7,4 @@ session_start();
 //Nous allons vérifier si une variable de session connected existe auquel cas on va laisser l'utilisateur accéder à cette page
 // $_SESSION['connected']=true;
 
-
 ?>
