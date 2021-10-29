@@ -15,6 +15,7 @@ session_start();
 require_once(__DIR__.'/Controllers/annonceController.php');
 
 if (isset($_GET['search'])) {
+    
     search();
     # code...
 }else{

@@ -8,9 +8,6 @@ function search(){
     $result = $annonceModel->searchAnnonces();
     include(__DIR__.'/../Views/listAnnoncesView.php');
 
-    // require(__DIR__ . '/../views/listView.php');
-    // exit;
-
 }
 
 function listCategories(){
@@ -19,4 +16,5 @@ function listCategories(){
     include(__DIR__.'/../Views/home.php');
 
 }
+
 
