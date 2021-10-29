@@ -53,11 +53,11 @@ class AnnonceModel extends Database
     public function searchAnnonces()
     {
         $db = $this->connect();
-        $sql = 'SELECT annonce.id_annonce FROM annonce, categorie, critere WHERE ';
+        $sql = 'SELECT annonce.id_annonce FROM annonce, categorie, critere WHERE 1=1 ';
         // terms on titre and desc
         if (isset($_GET['terms'])) {
-            $sql .= 'annonce.titre_annonce LIKE %:terms_titre% ';
-            $sql .= 'OR annonce.desc_annonce LIKE %:terms_desc% ';
+            $sql .= 'AND (annonce.titre_annonce LIKE %:terms_titre% ';
+            $sql .= 'OR annonce.desc_annonce LIKE %:terms_desc%) ';
         }
         // user
         if (isset($_GET['id_user'])) {
@@ -79,7 +79,7 @@ class AnnonceModel extends Database
         // Others criteres
         foreach ($_GET as $key => $value) {
             // filter on key name (set in form)
-            if (str_starts_with($key, "critere_")) {
+            if (strpos($key, 'critere_') === 0) {
                 $sql .= ' AND annonce.id_annonce = critere.id_annonce ';
                 $sql .= ' AND critere.nom_critere = :nom_critere ';
                 $sql .= ' AND critere.valeur_critere = :valeur_critere ';
@@ -113,12 +113,13 @@ class AnnonceModel extends Database
         // Others criteres
         foreach ($_GET as $key => $value) {
             // filter on key name (set in form)
-            if (str_starts_with($key, "critere_")) {
+            if (strpos($key, 'critere_') === 0) {
                 $query->bindValue(':nom_critere', $_GET['critere_nom_critere'], PDO::PARAM_STR);
                 $query->bindValue(':valeur_critere', $_GET['critere_valeur_critere'], PDO::PARAM_STR);
             }
         }
 
+        //echo $query->debugDumpParams();
         $query->execute();
         $annonces = array();
         while ($annonceId = $query->fetch(PDO::FETCH_ASSOC)) {

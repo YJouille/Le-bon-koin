@@ -17,13 +17,30 @@
   <!-- Favicon -->
   <!-- <link rel="icon" type="image/gif" href="./assets/icons/favicon.svg" /> -->
   <!-- CSS -->
-  <link href="./assets/style.css" rel="stylesheet">
+  <link href="./Assets/style.css" rel="stylesheet">
 </head>
 
 <body>
 <header>
-    
+  <nav>
+  <ul class="nav nav-pills d-flex align-items-center justify-content-around">
+    <li class="nav-item">
+      <a class="nav-link" href=""><h2>Le Bon Koin</h2></a>
+    </li>
+    <li class="nav-item addAnnonce">
+      <a class="nav-link" href="https://www.youtube.com/"><img src="" alt="">déposer une annonce</a>
+    </li>
+    <li class="nav-item">
+      <input type="text" name="" value="" placeholder="Rechercher une annonce">
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"><img class="logoAccount" src="../Assets/img/user.png"" alt="Logo account"></a>
+    </li>
+  </ul>  
+</nav>   
 </header>
+
+<section><?= $content?></section>
 
 <footer class="footer">
     copyright
