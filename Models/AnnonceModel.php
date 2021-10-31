@@ -11,17 +11,19 @@ class AnnonceModel extends Database
         $sql = 'SELECT * FROM annonce WHERE id_annonce = :id_annonce';
         $query = $db->prepare($sql);
         $query->bindValue(':id_annonce', $idAnnonce, PDO::PARAM_INT);
-        $annonce = $query->execute();
+        $query->execute();
         // get annonce
         $annonce = $query->fetch(PDO::FETCH_ASSOC);
         // add specific fields
         $sql = 'SELECT * FROM critere WHERE id_annonce = :id_annonce';
-        $query = $db->prepare($sql);
-        $query->bindValue(':id_annonce', $_GET['id_annonce'], PDO::PARAM_STR);
-        $fields = $query->execute();
+        $q = $db->prepare($sql);
+        $q->bindValue(':id_annonce', $idAnnonce, PDO::PARAM_INT);
+        $q->execute();
         // add each field
-        foreach ($fields as $field) {
-            $annonce[$field['nom_critere']] = $field['valeur_critere'];
+        if ($q->rowCount() > 0) {
+            while ($field = $q->fetch(PDO::FETCH_ASSOC)) {
+                $annonce[$field['nom_critere']] = $field['valeur_critere'];
+            }
         }
         return $annonce;
     }
@@ -53,7 +55,8 @@ class AnnonceModel extends Database
     public function searchAnnonces()
     {
         $db = $this->connect();
-        $sql = 'SELECT annonce.id_annonce FROM annonce, categorie, critere WHERE 1=1 ';
+        $tables = "annonce";
+        $sql = '';
         // terms on titre and desc
         if (isset($_GET['terms'])) {
             $sql .= 'AND (annonce.titre_annonce LIKE %:terms_titre% ';
@@ -80,12 +83,14 @@ class AnnonceModel extends Database
         foreach ($_GET as $key => $value) {
             // filter on key name (set in form)
             if (strpos($key, 'critere_') === 0) {
+                $tables .= ', critere ';
                 $sql .= ' AND annonce.id_annonce = critere.id_annonce ';
                 $sql .= ' AND critere.nom_critere = :nom_critere ';
                 $sql .= ' AND critere.valeur_critere = :valeur_critere ';
             }
         }
 
+        $sql = 'SELECT annonce.id_annonce FROM ' . $tables . ' WHERE 1=1 ' . $sql;
         $query = $db->prepare($sql);
         // bind param
         // terms on titre and desc
@@ -119,19 +124,19 @@ class AnnonceModel extends Database
             }
         }
 
-        //echo $query->debugDumpParams();
+        // echo $query->debugDumpParams();
+        // exit();
         $query->execute();
         $annonces = array();
         while ($annonceId = $query->fetch(PDO::FETCH_ASSOC)) {
-
-            $annonce = $this->getAnnonce($annonceId); 
+            $annonce = $this->getAnnonce($annonceId['id_annonce']);
             array_push($annonces, $annonce);
         }
         return $annonces;
     }
 
     // insert new annonce
-    public function addAnnonce()
+    public function newAnnonce()
     {
         $db = $this->connect();
         $sql = 'INSERT INTO annonce ( titre_annonce,  desc_annonce,  prix_annonce,  adresse_annonce,  id_categorie,  id_user)

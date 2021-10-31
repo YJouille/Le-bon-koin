@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : ven. 29 oct. 2021 à 15:25
+-- Généré le : dim. 31 oct. 2021 à 18:31
 -- Version du serveur : 5.7.36-0ubuntu0.18.04.1
 -- Version de PHP : 7.4.25
 
@@ -42,7 +42,8 @@ CREATE TABLE `annonce` (
 --
 
 INSERT INTO `annonce` (`id_annonce`, `titre_annonce`, `desc_annonce`, `prix_annonce`, `adresse_annonce`, `id_categorie`, `id_user`) VALUES
-(1, 'Poubelle', 'Très belle poubelle !', '50', '39110', 2, 1);
+(1, 'Poubelle', 'Très belle poubelle !', '50', '39110', 1, 1),
+(2, 'Chat névrotique', 'Peu servi...', '30', '39110', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -63,7 +64,6 @@ INSERT INTO `categorie` (`id_categorie`, `libelle_categorie`) VALUES
 (1, 'Ventes immobilières'),
 (2, 'Voitures'),
 (3, 'Multimédia'),
-(8, 'cxcwx'),
 (31, 'Informatique'),
 (32, 'Consoles & Jeux vidéo'),
 (33, 'Téléphonie');
@@ -110,7 +110,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nom_user`, `email_user`, `pwd_user`) VALUES
-(1, 'Bob', 'bob@server.fr', 'tagada');
+(1, 'Bob', 'bob@server.fr', 'tagada'),
+(3, 'root', 'root', '$2y$10$4ZerxQLWrN6RYJJk9z3ZL.36YtqFlfynlAUcZLyH8Z6uwHiSj.9d6');
 
 --
 -- Index pour les tables déchargées
@@ -158,13 +159,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `annonce`
 --
 ALTER TABLE `annonce`
-  MODIFY `id_annonce` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_annonce` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT pour la table `critere`
@@ -182,7 +183,7 @@ ALTER TABLE `photo`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Contraintes pour les tables déchargées
