@@ -27,7 +27,7 @@ function newAnnonce()
             require_once (__DIR__ . '/../Views/newAnnonceView.php');
         } else {
             // renvoi vers detail annonce
-            header();
+            //header();
         }
     } else {
         $listCategories = $annonceModel->listCategories();
