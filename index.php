@@ -24,6 +24,7 @@ if (isset($_GET['signin'])) {
     if (isset($_SESSION['connected'])) {
         newAnnonce();
     } else {
+        // TODO add redirect hidden field
         login();
     }
 } else {

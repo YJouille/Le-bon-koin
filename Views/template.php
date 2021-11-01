@@ -42,15 +42,11 @@
 							une annonce</a></li>
 					<li class="nav-item mx-0 mx-lg-1"><a
 						class="nav-link py-3 px-0 px-lg-3 rounded" href="./?search">Rechercher</a></li>
-						
 				    <?php if (!isset($_SESSION['connected'])) { ?>
 					<li class="nav-item mx-0 mx-lg-1"><a
 						class="nav-link py-3 px-0 px-lg-3 rounded" href="./?login">Se
 							connecter</a></li>
 					<?php } else { ?>
-					<li class="nav-item mx-0 mx-lg-1"><a
-						class="nav-link py-3 px-0 px-lg-3 rounded" href="./?search&id_user=<?=$_SESSION['connected'] ?>"><i
-							class="far fa-user"></i></a></li>
 					<li class="nav-item mx-0 mx-lg-1"><a
 						class="nav-link py-3 px-0 px-lg-3 rounded" href="./?logout">Se
 							déconnecter</a></li>					
@@ -228,11 +224,8 @@
 		</div>
 	</div>
 
-
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
 </body>
 </html>

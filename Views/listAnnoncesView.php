@@ -5,19 +5,21 @@ ob_start();
 <div class="container-fluid">
 	<div class="d-flex justify-content-center flex-wrap">
 	
-<?php 
+<?php
 // si tableau vide afficher 'aucune annonce'
-foreach ($annoncesList as $annonce) { ?>
+foreach ($annoncesList as $annonce) {
+    ?>
 
 
 			<div class="card m-2" style="width: 18rem;">
-			<img class="card-img-top" src="Assets/img/annonces/1.png"
-				alt="Card image cap">
+			<img class="card-img-top img-fluid" style="height: 300px; object-fit: contain;"
+				src="Assets/img/annonces/<?=$annonce['id_annonce']?>.png"
+				alt="<?=$annonce['titre_annonce']?>">
 			<div class="card-body">
 				<h5 class="card-title"><?=$annonce['titre_annonce']?></h5>
-				<p class="card-text">Some quick example text to build on the card
-					title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
+				<p class="card-text"><?=$annonce['desc_annonce']?></p>
+				<a href="?view&id_annonce=<?=$annonce['id_annonce']?>"
+					class="btn btn-primary">Détails</a>
 			</div>
 		</div>
 

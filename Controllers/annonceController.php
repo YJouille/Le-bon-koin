@@ -1,10 +1,11 @@
 <?php
 require_once (__DIR__ . '/../Models/AnnonceModel.php');
+$annonceModel = new AnnonceModel();
 
 function searchAnnonces()
 {
+    global $annonceModel;
     // les annonces d'une categorie, les annonces d'un user ou une recherche passent par la méthode search du modele
-    $annonceModel = new AnnonceModel();
     $annoncesList = $annonceModel->searchAnnonces();
     require_once (__DIR__ . '/../Views/listAnnoncesView.php');
     exit();
@@ -12,25 +13,23 @@ function searchAnnonces()
 
 function listCategories()
 {
-    $annonceModel = new AnnonceModel();
+    global $annonceModel;
     $listCategories = $annonceModel->listCategories();
     require_once (__DIR__ . '/../Views/home.php');
 }
 
 function newAnnonce()
 {
-    $annonceModel = new AnnonceModel();
+    global $annonceModel;
+    $listCategories = $annonceModel->listCategories();
     if (isset($_POST['submit'])) {
-
-        $error = $annonceModel->newAnnonce();
-        if ($error) {
+        $errors = $annonceModel->newAnnonce();
+        if ($errors) {
             require_once (__DIR__ . '/../Views/newAnnonceView.php');
         } else {
-            // renvoi vers detail annonce
-            //header();
+            require_once (__DIR__ . '/../Views/home.php');
         }
     } else {
-        $listCategories = $annonceModel->listCategories();
         require_once (__DIR__ . '/../Views/newAnnonceView.php');
     }
 }

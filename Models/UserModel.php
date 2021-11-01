@@ -26,7 +26,7 @@ class UserModel extends Database
             // On utilise password_verify pour s'assurer que le mot de passe saisie est bien celui que nous avons en crypté dans la base de données
             if (password_verify($pwd, $user['pwd_user'])) {
                 // Si c'est bon nous créons notre variable de session et faisons la redirection.
-                $_SESSION['connected'] = true;
+                $_SESSION['connected'] = $user['id_user'];
             } else {
                 echo 'Le mot de passe est invalide.';
             }
