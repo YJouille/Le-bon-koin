@@ -36,7 +36,7 @@ ob_start();
 						<div class="text-center text-danger mb-3">Error sending message!</div>
 					</div> -->
 					
-					<div class="text-center"><button class="btn btn-primary btn-xl" id="submitButton"
+					<div class="text-center"><button class="btn btn-primary me-2 " id="submitButton"
 						type="submit">Se connecter</button>
 						
 						<a href="?signin">Pas encore inscrit ?</a>

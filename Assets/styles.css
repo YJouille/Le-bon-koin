@@ -6,7 +6,18 @@
   height:30px ;
   margin : 8px
 }
-
+.list-annonces{
+  display: block;
+  height: calc(100vh - 300px);
+  margin: 50px;
+  overflow-y: auto;
+}
+.new-annonce{
+  display: block;
+  height: calc(100vh - 300px);
+  margin: 50px;
+  overflow-y: auto;
+}
 
 /*!
 * Start Bootstrap - Freelancer v7.0.5 (https://startbootstrap.com/theme/freelancer)
@@ -4521,6 +4532,8 @@ textarea.form-control-lg {
 }
 
 .card {
+  width:18rem;/*personnal style*/
+  height:28rem;/*personnal style*/
   position: relative;
   display: flex;
   flex-direction: column;
@@ -4530,6 +4543,12 @@ textarea.form-control-lg {
   background-clip: border-box;
   border: 0.125rem solid rgba(0, 0, 0, 0.125);
   border-radius: 0.5rem;
+}
+.btn-detail{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 8px;
 }
 .card > hr {
   margin-right: 0;
@@ -4617,6 +4636,7 @@ textarea.form-control-lg {
   border-radius: 0.375rem;
 }
 
+
 .card-img,
 .card-img-top,
 .card-img-bottom {
@@ -4625,6 +4645,9 @@ textarea.form-control-lg {
 
 .card-img,
 .card-img-top {
+  height: 300px; /*personnal style*/
+  object-fit: contain; /*personnal style*/
+
   border-top-left-radius: 0.375rem;
   border-top-right-radius: 0.375rem;
 }
@@ -11313,8 +11336,15 @@ html {
 }
 @media (min-width: 992px) {
   .page-section .page-section-heading {
-    /*font-size: 3rem;
-    line-height: 2.5rem;*/
+    /* font-size: 3rem;
+    line-height: 2.5rem; */
+  }
+}
+/*personal style*/
+@media (max-width: 992px) {
+  .page-section .page-section-heading {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
   }
 }
 

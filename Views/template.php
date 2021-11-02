@@ -1,56 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="<?=$pageDescription;?>" />
-<meta name="author" content="" />
-<title>Le Bon Koin - <?=$pageTitle;?></title>
-<!-- Favicon-->
-<link rel="icon" type="image/png" href="Assets/img/icon.png" />
-<!-- Font Awesome icons (free version)-->
-<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
-	crossorigin="anonymous"></script>
-<!-- Google fonts-->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-	rel="stylesheet" type="text/css" />
-<link
-	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
-	rel="stylesheet" type="text/css" />
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href="Assets/styles.css" rel="stylesheet" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="<?= $pageDescription; ?>" />
+	<meta name="author" content="" />
+	<title>Le Bon Koin - <?= $pageTitle; ?></title>
+	<!-- Favicon-->
+	<link rel="icon" type="image/png" href="Assets/img/icon.png" />
+	<!-- Font Awesome icons (free version)-->
+	<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+	<!-- Google fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+	<!-- Core theme CSS (includes Bootstrap)-->
+	<link href="Assets/styles.css" rel="stylesheet" />
 </head>
+
 <body id="page-top">
 	<!-- Navigation-->
-	<nav
-		class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top"
-		id="mainNav">
+	<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
 		<div class="container">
-			<a class="navbar-brand" href="index.php"><img class="logo-img" src="Assets/img/icon.png" alt="image logo" >Le Bon Koin</a>
-			<button
-				class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
-				type="button" data-bs-toggle="collapse"
-				data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
+			<a class="navbar-brand" href="index.php"><img class="logo-img" src="Assets/img/icon.png" alt="image logo">Le Bon Koin</a>
+			<button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				Menu <i class="fas fa-bars"></i>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ms-auto">
-					<li class="nav-item mx-0 mx-lg-1"><a
-						class="nav-link py-3 px-0 px-lg-3 rounded" href="./?new"> Déposer
+					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="./?new"> Déposer
 							une annonce</a></li>
-					<li class="nav-item mx-0 mx-lg-1"><a
-						class="nav-link py-3 px-0 px-lg-3 rounded" href="./?search">Rechercher</a></li>
-				    <?php if (!isset($_SESSION['connected'])) { ?>
-					<li class="nav-item mx-0 mx-lg-1"><a
-						class="nav-link py-3 px-0 px-lg-3 rounded" href="./?login">Se
-							connecter</a></li>
+					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="./?search">Rechercher</a></li>
+					<?php if (!isset($_SESSION['connected'])) { ?>
+						<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="./?login">Se
+								connecter</a></li>
 					<?php } else { ?>
-					<li class="nav-item mx-0 mx-lg-1"><a
-						class="nav-link py-3 px-0 px-lg-3 rounded" href="./?logout">Se
-							déconnecter</a></li>					
-					<?php } ?>					
+						<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="./?logout">Se
+								déconnecter</a></li>
+					<?php } ?>
 				</ul>
 			</div>
 		</div>
@@ -73,8 +60,9 @@
 				petites annonces près de chez vous !</p>
 		</div>
 	</header>
-    <!-- Here content of view -->
-	<?=$content; ?>
+	<!-- Here content of view -->
+	
+		<?= $content; ?>
 
 	<!-- About Section-->
 	<!-- 
@@ -225,7 +213,7 @@
 	</div>
 
 	<!-- Bootstrap core JS-->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
