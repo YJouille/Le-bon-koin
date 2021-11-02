@@ -11,11 +11,7 @@ ob_start();
 				class="page-section-heading text-center text-uppercase text-secondary mb-0">Catégories</h2>
 			<!-- Icon Divider-->
 			<div class="divider-custom">
-				<div class="divider-custom-line"></div>
-				<div class="divider-custom-icon">
-					<i class="fas fa-star"></i>
-				</div>
-				<div class="divider-custom-line"></div>
+				<div class="divider-custom-line"></div>	
 			</div>
 			<!-- Portfolio Grid Items-->
 			<div class="row justify-content-center">
@@ -33,7 +29,7 @@ ob_start();
 							</div>
 						</div>
 						<img class="img-fluid" src="Assets/img/portfolio/immo.png"
-							alt="..." />
+							alt="image categorie immoblier" />
 					</div>
 				</div>
 				<!-- Portfolio Item 2-->
@@ -49,7 +45,7 @@ ob_start();
 							</div>
 						</div>
 						<img class="img-fluid" src="Assets/img/portfolio/voitures.png"
-							alt="..." />
+							alt="image categorie voiture" />
 					</div>
 				</div>
 				<!-- Portfolio Item 3-->
@@ -65,7 +61,7 @@ ob_start();
 							</div>
 						</div>
 						<img class="img-fluid" src="Assets/img/portfolio/multimedia.png"
-							alt="..." />
+							alt="image categorie multimédia" />
 					</div>
 				</div>
 			</div>
@@ -76,5 +72,6 @@ ob_start();
 <?php 
 $content = ob_get_clean();
 $pageTitle = "Accueil";
+$pageDescription="Page d'accueil du site le bon koin";
 require(__DIR__.'/template.php');
 ?>

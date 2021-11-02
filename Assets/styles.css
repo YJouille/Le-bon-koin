@@ -1,4 +1,13 @@
 @charset "UTF-8";
+
+/* Personnal style */
+.logo-img{
+  width:30px ;
+  height:30px ;
+  margin : 8px
+}
+
+
 /*!
 * Start Bootstrap - Freelancer v7.0.5 (https://startbootstrap.com/theme/freelancer)
 * Copyright 2013-2021 Start Bootstrap
@@ -2665,7 +2674,9 @@ textarea.form-control-lg {
 }
 .form-floating > .form-control,
 .form-floating > .form-select {
-  height: 5.5rem;
+  /*Reduce height of form inputs height */
+  height: 4rem;
+  /* height: 5.5rem; */
   line-height: 1.25;
 }
 .form-floating > label {

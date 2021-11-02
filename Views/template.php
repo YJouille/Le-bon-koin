@@ -4,11 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
+<meta name="description" content="<?=$pageDescription;?>" />
 <meta name="author" content="" />
 <title>Le Bon Koin - <?=$pageTitle;?></title>
 <!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="Assets/favicon.ico" />
+<link rel="icon" type="image/png" href="Assets/img/icon.png" />
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
 	crossorigin="anonymous"></script>
@@ -27,7 +27,7 @@
 		class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top"
 		id="mainNav">
 		<div class="container">
-			<a class="navbar-brand" href="index.php">Le Bon Koin</a>
+			<a class="navbar-brand" href="index.php"><img class="logo-img" src="Assets/img/icon.png" alt="image logo" >Le Bon Koin</a>
 			<button
 				class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
 				type="button" data-bs-toggle="collapse"
@@ -73,7 +73,7 @@
 				petites annonces près de chez vous !</p>
 		</div>
 	</header>
-
+    <!-- Here content of view -->
 	<?=$content; ?>
 
 	<!-- About Section-->
@@ -218,7 +218,7 @@
 
 
 	<!-- Copyright Section-->
-	<div class="copyright py-4 text-center text-white">
+	<div class="copyright py-4 text-center text-white fixed-bottom">
 		<div class="container">
 			<small>Copyright &copy; Le Bon Koin 2021</small>
 		</div>

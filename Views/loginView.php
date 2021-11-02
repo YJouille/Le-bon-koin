@@ -51,6 +51,7 @@ ob_start();
 <?php
 $content = ob_get_clean();
 $pageTitle = "Connexion";
+$pageDescription= "Page de connexion pour site du bon koin";
 require (__DIR__ . '/template.php');
 ?>
 

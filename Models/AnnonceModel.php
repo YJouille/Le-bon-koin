@@ -69,29 +69,8 @@ class AnnonceModel extends Database
         return $annonce;
     }
 
-    // list all annonces
-    public function listAnnonces()
-    {
-        $db = $this->connect();
-        $sql = 'SELECT * FROM annonce';
-        $query = $db->prepare($sql);
-        $query->execute();
-        $annonces = array();
-        // add specifics fields for each annonces
-        while ($annonce = $query->fetch(PDO::FETCH_ASSOC)) {
-            $sql = 'SELECT * FROM critere WHERE id_annonce = :id_annonce';
-            $q = $db->prepare($sql);
-            $q->bindValue(':id_annonce', $annonce['id_annonce'], PDO::PARAM_INT);
-            $q->execute();
-            // add each field
-            while ($field = $q->fetch(PDO::FETCH_ASSOC)) {
-                $annonce[$field['nom_critere']] = $field['valeur_critere'];
-            }
-            array_push($annonces, $annonce);
-        }
-        return $annonces;
-    }
-
+    
+    // list all annonces, search without critere
     // search annonces
     public function searchAnnonces()
     {
@@ -100,8 +79,8 @@ class AnnonceModel extends Database
         $sql = '';
         // terms on titre and desc
         if (isset($_GET['terms'])) {
-            $sql .= 'AND (annonce.titre_annonce LIKE :terms_titre ';
-            $sql .= 'OR annonce.desc_annonce LIKE :terms_desc) ';
+            $sql .= "AND (annonce.titre_annonce LIKE CONCAT('%', :terms_titre, '%') ";
+            $sql .= "OR annonce.desc_annonce LIKE CONCAT('%', :terms_desc, '%') ";
         }
         // user
         if (isset($_GET['id_user'])) {
@@ -260,7 +239,7 @@ class AnnonceModel extends Database
         $query->execute();
     }
 
-    // update annonce
+    // update annonce ?????
     public function updateAnnonce()
     {
         $db = $this->connect();

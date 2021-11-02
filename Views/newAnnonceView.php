@@ -239,5 +239,6 @@ ob_start();
 <?php
 $content = ob_get_clean();
 $pageTitle = "Nouvelle annonce";
+$pageDescription="Nouvelle annonce";
 require (__DIR__ . '/template.php');
 ?>

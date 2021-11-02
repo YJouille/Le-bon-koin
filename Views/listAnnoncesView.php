@@ -35,5 +35,6 @@ foreach ($annoncesList as $annonce) {
 <?php
 $content = ob_get_clean();
 $pageTitle = "Liste des annonces";
+$pageDescription="Liste des annonces du bon koin";
 require (__DIR__ . '/template.php');
 ?>

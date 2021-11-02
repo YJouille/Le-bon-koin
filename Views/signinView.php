@@ -52,6 +52,7 @@ ob_start();
 <?php
 $content = ob_get_clean();
 $pageTitle = "Inscription";
+$pageDescription= "Page d'inscription pour site du bon koin";
 require (__DIR__ . '/template.php');
 ?>
 
