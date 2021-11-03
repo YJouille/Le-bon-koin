@@ -9,20 +9,25 @@ ob_start();
 		// si tableau vide afficher 'aucune annonce'
 		foreach ($annoncesList as $annonce) {
 		?>
-			<div class="card m-2">
-				<img class="card-img-top img-fluid" src="Assets/img/annonces/<?= $annonce['id_annonce'] ?>.png" alt="<?= $annonce['titre_annonce'] ?>">
+
+			<div class="card m-2" style="width: 18rem;">
+				<?php
+				if (file_exists(__DIR__ . "/../Assets/img/annonces/" . $annonce['id_annonce'] . ".png")) {
+					$imagPath = "Assets/img/annonces/" . $annonce['id_annonce'] . ".png";
+				} else {
+					$imagPath = "Assets/img/annonces/no-pict.png";
+				}
+				?>
+
+				<img class="card-img-top img-fluid" style="height: 300px; object-fit: contain;" src="<?= $imagPath ?>" alt="<?= $annonce['titre_annonce'] ?>">
 				<div class="card-body">
 					<h5 class="card-title"><?= $annonce['titre_annonce'] ?></h5>
-					<p class="card-text"><?= $annonce['desc_annonce'] ?></p>
-					<p class="card-text"><?= $annonce['prix_annonce'] ?> €</p>
-					<a href="?view&id_annonce=<?= $annonce['id_annonce'] ?>" class="btn btn-primary btn-detail">Détails</a>
+					<h6 class="card-subtitle"><?= $annonce['prix_annonce'] ?> €</h6>
+					
+					<a href="?view&id_annonce=<?= $annonce['id_annonce'] ?>" class="btn btn-primary">Détails</a>
 				</div>
 			</div>
-
 		<?php } ?>
-
-
-
 	</div>
 </div>
 

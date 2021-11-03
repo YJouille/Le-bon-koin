@@ -279,9 +279,13 @@ class AnnonceModel extends Database
     public function listCategories()
     {
         $db = $this->connect();
-        $sql = 'SELECT * FROM categorie';
+        $categories = array();
+        $sql = 'SELECT id_categorie, libelle_categorie FROM categorie';
         $query = $db->prepare($sql);
         $query->execute();
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+        while ($cat = $query->fetch(PDO::FETCH_ASSOC)) {
+            $categories[$cat['id_categorie']] = $cat['libelle_categorie'];
+        }
+        return $categories;
     }
 }

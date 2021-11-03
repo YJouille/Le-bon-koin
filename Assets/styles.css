@@ -4548,12 +4548,7 @@ textarea.form-control-lg {
   border: 0.125rem solid rgba(0, 0, 0, 0.125);
   border-radius: 0.5rem;
 }
-.btn-detail{
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 8px;
-}
+
 .card > hr {
   margin-right: 0;
   margin-left: 0;

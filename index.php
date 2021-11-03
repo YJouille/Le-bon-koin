@@ -20,6 +20,8 @@ if (isset($_GET['signin'])) {
     logout();
 } elseif (isset($_GET['search'])) {
     searchAnnonces();
+} elseif (isset($_GET['view'])) {
+    viewAnnonce();
 } elseif (isset($_GET['new'])) {
     if (isset($_SESSION['connected'])) {
         newAnnonce();
