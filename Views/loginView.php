@@ -4,7 +4,7 @@ ob_start();
 ?>
 
 
-<section class="page-section" id="contact">
+<section class="page-section login" id="contact">
 	<div class="container">
 		<h2
 			class="page-section-heading text-center text-uppercase text-secondary mb-0">

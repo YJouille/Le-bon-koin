@@ -48,6 +48,20 @@ class UserModel extends Database
         $query->execute();
     }
 
+    function getUser($userId)
+    {
+        // On écrit la requête
+        $sql = 'SELECT * FROM user WHERE id_user = :id_user';
+        $db = $this->connect();
+        // On prépare la requête
+        $query = $db->prepare($sql);
+        // On injecte (terme scientifique) les valeurs
+        $query->bindValue(':id_user', $userId, PDO::PARAM_INT);
+        // On exécute la requête
+        $user = $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
   
 }
 

@@ -1,29 +1,45 @@
 @charset "UTF-8";
 
 /* Personnal style */
-.logo-img{
+.logo-img  {
   width:30px ;
   height:30px ;
   margin : 8px
 }
-.list-annonces{
+.list-annonces, .new-annonce, .search-annonce, .signin, .annonce-view, .login{
   display: block;
   height: calc(100vh - 300px);
   margin: 15px;
   overflow-y: auto;
 }
-.new-annonce{
+/* .new-annonce{
+  display: block;
+  height: calc(100vh - 300px);
+  margin: 15px;
+  overflow-y: auto;
+} */
+/* .search-annonce{
+  display: block;
+  height: calc(100vh - 300px);
+  margin: 15px;
+  overflow-y: auto;
+} */
+/* .signin{
   display: block;
   height: calc(100vh - 300px);
   margin: 15px;
   overflow-y: auto;
 }
-.search-annonce{
+.annonce-view {
   display: block;
   height: calc(100vh - 300px);
   margin: 15px;
   overflow-y: auto;
 }
+.login{
+
+} */
+
 
 /*!
 * Start Bootstrap - Freelancer v7.0.5 (https://startbootstrap.com/theme/freelancer)

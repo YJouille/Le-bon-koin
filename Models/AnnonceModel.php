@@ -63,7 +63,7 @@ class AnnonceModel extends Database
         // add each field
         if ($q->rowCount() > 0) {
             while ($field = $q->fetch(PDO::FETCH_ASSOC)) {
-                $annonce[$field['nom_critere']] = $field['valeur_critere'];
+                $annonce['critere_'.$field['nom_critere']] = $field['valeur_critere'];
             }
         }
         return $annonce;
@@ -224,6 +224,28 @@ class AnnonceModel extends Database
                 $q->bindValue(':nom_critere', $critere, PDO::PARAM_STR);
                 $q->bindValue(':valeur_critere', $_POST['critere_' . $critere], PDO::PARAM_STR);
                 $q->execute();
+            }
+        }
+
+        // IMAGES INSERT
+        $i = 1;
+        if (isset($_POST['submit'])) {
+            foreach ($_FILES['photos_annonce']['tmp_name'] as $file => $image) {
+                $valid_formats = ["jpg", "png", "gif", "bmp"];
+                $path = "./Assets/img/annonces/";
+                $fileName = $_FILES['photos_annonce']['name'][$file];
+                $tmpName = $_FILES['photos_annonce']['tmp_name'][$file];
+
+                if (strlen($fileName)) {
+                    $fileExt = "." . strtolower(substr(strrchr($fileName, '.'), 1));
+                    if (!in_array($fileExt, $valid_formats)) {
+                        $uniqueName = $annonceId.'-'.$i++ . $fileExt;
+                        move_uploaded_file($tmpName, $path . $uniqueName);
+                    }
+                }
+                if ($i==10){
+                    break;
+                }
             }
         }
         return false;

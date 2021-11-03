@@ -10,7 +10,7 @@ ob_start();
 			<div class="divider-custom-line"></div>
 		</div>
 
-		<form action="?new" method="post">
+		<form action="?new" method="post" enctype="multipart/form-data">
 			<div class="row justify-content-center">
 				<div class="col-lg-6 col-xl-5">
 
@@ -44,6 +44,9 @@ ob_start();
 						<?php } ?>
 					</div>
 
+					<input class="form-control" id="photos" type="file" name="photos_annonce[]" placeholder="Ajoutez des photos à votre annonce" multiple/>
+						<label for="photos">Photos de l'annonce</label>
+
 					<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 					<script src="https://vicopo.selfbuild.fr/vicopo.min.js"></script>
 					<div class="form-floating mb-3">
@@ -75,13 +78,13 @@ ob_start();
 						<select class="form-select" id="categorie" name="id_categorie" onchange="updateCategories();">
 							<option value="0">---</option>
 							<?php
-							foreach ($listCategories as $categorie) {
+							foreach ($listCategories as $id_categorie=>$libelle_categorie) {
 							?>
-								<option value="<?= $categorie['id_categorie']; ?>" <?php if (isset($errors['value']['id_categorie']) && ($categorie['id_categorie'] == $errors['value']['id_categorie'])) {
+								<option value="<?= $id_categorie; ?>" <?php if (isset($errors['value']['id_categorie']) && ($id_categorie == $errors['value']['id_categorie'])) {
 																						echo 'selected';
 																					} ?>>
-									<?php if (strlen($categorie['id_categorie']) > 1) echo '---'; ?>
-									<?= $categorie['libelle_categorie']; ?></option>
+									<?php if (strlen($id_categorie) > 1) echo '---'; ?>
+									<?= $libelle_categorie; ?></option>
 							<?php } ?>
 						</select> <label for="categorie">Catégorie de l'annonce</label>
 						<?php if (isset($errors['errors']['id_categorie'])) { ?>

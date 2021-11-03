@@ -4,7 +4,7 @@ ob_start();
 ?>
 
 
-<section class="page-section" id="contact">
+<section class="page-section signin" id="contact">
 	<div class="container">
 		<h2
 			class="page-section-heading text-center text-uppercase text-secondary mb-0">
@@ -35,11 +35,13 @@ ob_start();
 						<input class="form-control" id="pwd" name="pwd" type="password"
 							placeholder="Mot de passe" required="required" /> <label
 							for="pwd">Mot de passe</label>
+							<small class="form-text text-muted">Le mot de passe de 8 caractères minimum nécessite une majuscule, un chiffre, et un caractère spécial.</small>
 					</div>
-
-					<!-- <div class="d-none" id="submitErrorMessage">
-						<div class="text-center text-danger mb-3">Error sending message!</div>
-					</div> -->
+					<?php if (isset($errorPassword)){ ?>
+						<div id="submitErrorMessage">
+							<div class="text-center text-danger mb-3"><?=$errorPassword ?></div>
+						</div>
+					<?php } ?>
 					<button class="btn btn-primary me-2 " id="submitButton"
 						type="submit">S'inscrire</button>
 				</form>

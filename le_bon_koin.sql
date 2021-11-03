@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : lun. 01 nov. 2021 à 20:06
--- Version du serveur : 5.7.33
--- Version de PHP : 7.4.19
+-- Hôte : localhost
+-- Généré le : mer. 03 nov. 2021 à 22:48
+-- Version du serveur : 5.7.36-0ubuntu0.18.04.1
+-- Version de PHP : 7.4.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `annonce` (
   `id_annonce` int(11) NOT NULL,
   `titre_annonce` varchar(255) NOT NULL,
-  `desc_annonce` varchar(255) NOT NULL,
+  `desc_annonce` longtext NOT NULL,
   `prix_annonce` decimal(10,0) NOT NULL,
   `adresse_annonce` varchar(255) NOT NULL,
   `id_categorie` int(11) NOT NULL,
@@ -42,33 +42,20 @@ CREATE TABLE `annonce` (
 --
 
 INSERT INTO `annonce` (`id_annonce`, `titre_annonce`, `desc_annonce`, `prix_annonce`, `adresse_annonce`, `id_categorie`, `id_user`) VALUES
-(1, 'Poubelle', 'Très belle poubelle !', '50', '39110', 1, 1),
-(2, 'Chat névrotique', 'Peu servi...', '30', '39110', 1, 1),
-(3, 'Maison de campagne', 'Magnifique maison près de salins les bains', '200000', '39110', 1, 3),
-(4, 'Telephone', 'smartphone dernière génération', '200', '39110', 33, 3);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `categorie`
---
-
-CREATE TABLE `categorie` (
-  `id_categorie` int(11) NOT NULL,
-  `libelle_categorie` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `categorie`
---
-
-INSERT INTO `categorie` (`id_categorie`, `libelle_categorie`) VALUES
-(1, 'Ventes immobilières'),
-(2, 'Voitures'),
-(3, 'Multimédia'),
-(31, 'Informatique'),
-(32, 'Consoles & Jeux vidéo'),
-(33, 'Téléphonie');
+(2, 'Chat névrotique', 'Peu servi...', '30', '39110 - Bracon', 1, 3),
+(7, 'Clio 3', 'Clio 3 essence année 2013.', '3000', '75000 - Paris', 2, 3),
+(19, 'Stella', 'chat ayant peut servit \r\ndort beaucoup \r\nmange énormement', '41', '39110 - La Chapelle-sur-Furieuse', 31, 3),
+(20, 'Service de porcelaine ', '74 pieces de porcelaine ( dont 4 ébrechés) \r\nPorcelaine datant de Louis 14\r\nEtat moyen ', '155', '39110 - LA CHAPELLE SUR FURIEUSE', 31, 3),
+(21, 'Portée de 4 chatons', '4 chatons adorables ( mais hyperactifs )\r\n4 choix de couleurs : blanc / noir /noir et blanc / gris ', '0', '25000 - BESANCON', 31, 3),
+(22, 'Cabane dans les arbres', '2 planches ( mal ) accrochées dans un arbre (un pommier ) et une chaise inaccessible\r\nPas de toit, des poulie et une échelle', '3', '39110 - LA CHAPELLE SUR FURIEUSE onay', 1, 3),
+(23, 'Télephone portable ', 'Télephone portable :\r\nSamsung galaxy 9\r\nplus coque licorne avec des paillettes \r\n ', '150', '85520 - JARD SUR MER rue des essard ', 33, 3),
+(24, 'Manette de console', 'Manette de console, convient aussi pour un ordinateur \r\nPossibilité de mettre des piles rechargeables  ', '80', '21000 - DIJON', 32, 3),
+(25, 'Vélo du tour de FRANCE ', 'Vélo ayant été perdu par les dépanneurs du tour de france\r\nTaille: adulte \r\nCouleur : Bleu et jaune \r\nType : vélo de route ( roues très fines )', '95', '39100 - DOLE ', 2, 3),
+(26, 'Gameboy', 'Gameboy couleur \r\n5 jeux fourni à l\'achat\r\npossibilité d\'autre jeu \r\n', '50', '57000 - METZ', 32, 3),
+(27, 'Appartement 35m2', 'Appartement 4 pièces, quartier très calme. Libre début décembre.', '300', '39110 - LA CHAPELLE SUR FURIEUSE', 1, 3),
+(28, 'Caravane', 'Caravane de 6m2 ( 2m 50 de haut ) avec eau, électricité et chauffage ', '10000', '39110 - LA CHAPELLE SUR FURIEUSE onay rue du chateau d\'eau ', 2, 3),
+(31, 'Gameboy color', 'fdsfsd sfsf ', '3', '21000 - DIJON', 31, 3),
+(32, 'Gameboy color', 'fdsfsd sfsf ', '3', '21000 - DIJON', 31, 3);
 
 -- --------------------------------------------------------
 
@@ -88,47 +75,57 @@ CREATE TABLE `critere` (
 --
 
 INSERT INTO `critere` (`id_critere`, `id_annonce`, `nom_critere`, `valeur_critere`) VALUES
-(1, 3, 'type-de-bien', 'Maison'),
-(2, 3, 'surface', '150'),
-(3, 3, 'nombre-de-pieces', '8'),
-(4, 4, 'marque', 'samsung'),
-(5, 4, 'modele', 'J5'),
-(6, 4, 'couleur', 'noir'),
-(7, 4, 'capacite-de-stockage', '200'),
-(8, 4, 'etat', 'Très bon état');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `photo`
---
-
-CREATE TABLE `photo` (
-  `id_photo` int(11) NOT NULL,
-  `id_annonce` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `user`
---
-
-CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
-  `nom_user` varchar(255) NOT NULL,
-  `email_user` varchar(255) NOT NULL,
-  `pwd_user` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `user`
---
-
-INSERT INTO `user` (`id_user`, `nom_user`, `email_user`, `pwd_user`) VALUES
-(1, 'Bob', 'bob@server.fr', 'tagada'),
-(3, 'root', 'root', '$2y$10$4ZerxQLWrN6RYJJk9z3ZL.36YtqFlfynlAUcZLyH8Z6uwHiSj.9d6'),
-(4, 'yamina', 'y.j.39110@gmail.com', '$2y$10$4WRkJcRzW5Jyzpmf2RGeXuUWpjpz15LijE4vJrAITOFi7JohEf6uG');
+(19, 7, 'marque', 'Renault'),
+(20, 7, 'modele', 'Clio'),
+(21, 7, 'km', '120000'),
+(22, 7, 'carburant', 'Essence'),
+(23, 7, 'boite-de-vitesse', 'Manuelle'),
+(24, 7, 'couleur', 'Rouge'),
+(25, 7, 'nb-de-portes', '5'),
+(26, 7, 'puissance', '6'),
+(27, 7, 'nb-de-places', '5'),
+(47, 19, 'etat', 'Très bon état'),
+(48, 20, 'etat', 'Etat satisfaisant'),
+(49, 21, 'etat', 'Pour pièces'),
+(50, 22, 'type-de-bien', 'Maison'),
+(51, 22, 'surface', '1'),
+(52, 22, 'nombre-de-pieces', '2'),
+(53, 23, 'marque', 'Samsung '),
+(54, 23, 'modele', 'Samsung galaxy 9'),
+(55, 23, 'couleur', 'Rouge et bleu'),
+(56, 23, 'capacite-de-stockage', '12'),
+(57, 23, 'etat', 'Très bon état'),
+(58, 24, 'type', 'Accessoires'),
+(59, 24, 'marque', 'nintendo '),
+(60, 24, 'modele', 'nintendo switch '),
+(61, 24, 'etat', 'Bon état'),
+(62, 25, 'marque', 'Décatlon '),
+(63, 25, 'modele', 'Mx 43'),
+(64, 25, 'km', '40'),
+(65, 25, 'carburant', 'Electrique'),
+(66, 25, 'boite-de-vitesse', 'Automatique'),
+(67, 25, 'couleur', 'Rouge et bleu'),
+(68, 25, 'nb-de-portes', '0'),
+(69, 25, 'puissance', '0'),
+(70, 25, 'nb-de-places', '1'),
+(71, 26, 'type', 'Console'),
+(72, 26, 'marque', 'nintendo'),
+(73, 26, 'modele', 'Gameboy color '),
+(74, 26, 'etat', 'Bon état'),
+(75, 27, 'type-de-bien', 'Appartement'),
+(76, 27, 'surface', '32'),
+(77, 27, 'nombre-de-pieces', '4'),
+(78, 28, 'marque', 'Renault'),
+(79, 28, 'modele', 'Megane '),
+(80, 28, 'km', '5000'),
+(81, 28, 'carburant', 'Essence'),
+(82, 28, 'boite-de-vitesse', 'Automatique'),
+(83, 28, 'couleur', 'Blanc'),
+(84, 28, 'nb-de-portes', '4'),
+(85, 28, 'puissance', '250'),
+(86, 28, 'nb-de-places', '6'),
+(89, 31, 'etat', 'Neuf'),
+(90, 32, 'etat', 'Neuf');
 
 --
 -- Index pour les tables déchargées
@@ -143,30 +140,11 @@ ALTER TABLE `annonce`
   ADD KEY `id_categorie` (`id_categorie`);
 
 --
--- Index pour la table `categorie`
---
-ALTER TABLE `categorie`
-  ADD PRIMARY KEY (`id_categorie`);
-
---
 -- Index pour la table `critere`
 --
 ALTER TABLE `critere`
   ADD PRIMARY KEY (`id_critere`),
   ADD KEY `id_annonce` (`id_annonce`);
-
---
--- Index pour la table `photo`
---
-ALTER TABLE `photo`
-  ADD PRIMARY KEY (`id_photo`),
-  ADD KEY `id_annonce` (`id_annonce`);
-
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -176,31 +154,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `annonce`
 --
 ALTER TABLE `annonce`
-  MODIFY `id_annonce` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT pour la table `categorie`
---
-ALTER TABLE `categorie`
-  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_annonce` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT pour la table `critere`
 --
 ALTER TABLE `critere`
-  MODIFY `id_critere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT pour la table `photo`
---
-ALTER TABLE `photo`
-  MODIFY `id_photo` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_critere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- Contraintes pour les tables déchargées
@@ -218,12 +178,6 @@ ALTER TABLE `annonce`
 --
 ALTER TABLE `critere`
   ADD CONSTRAINT `critere_ibfk_1` FOREIGN KEY (`id_annonce`) REFERENCES `annonce` (`id_annonce`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `photo`
---
-ALTER TABLE `photo`
-  ADD CONSTRAINT `photo_ibfk_1` FOREIGN KEY (`id_annonce`) REFERENCES `annonce` (`id_annonce`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
