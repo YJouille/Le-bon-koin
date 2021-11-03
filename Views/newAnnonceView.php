@@ -1,5 +1,5 @@
 <?php
-// page affichant la liste des annonces $annoncesList
+
 ob_start();
 ?>
 <section class="page-section new-annonce" id="contact">
@@ -44,11 +44,21 @@ ob_start();
 						<?php } ?>
 					</div>
 
-					<!-- add js for zip codes -->
+					<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+					<script src="https://vicopo.selfbuild.fr/vicopo.min.js"></script>
 					<div class="form-floating mb-3">
-						<input class="form-control" id="adresse" type="text" name="adresse_annonce" placeholder="Adresse de l'annonce" value="<?php if (isset($errors['value']['adresse_annonce'])) {
-																																					echo $errors['value']['adresse_annonce'];
-																																				} ?>" />
+						<input class="form-control"
+						id="adresse" type="text" 
+						name="adresse_annonce" 
+						placeholder="Entrer une ville ou un code postal" 
+						value="<?php if (isset($errors['value']['adresse_annonce'])) {	echo $errors['value']['adresse_annonce'];} ?>" />
+						<ul>
+							<!--Affichage de la liste à partir de 2 caractères saisis-->
+							<li data-vicopo="#adresse" data-vicopo-click='{"#adresse": "code - ville"}'>
+								<strong data-vicopo-code-postal></strong>
+								<span data-vicopo-ville></span>
+							</li>
+						</ul>
 						<label for="adresse">Adresse de l'annonce</label>
 						<?php if (isset($errors['errors']['adresse_annonce'])) { ?>
 							<div class="invalid-feedback"><?= $errors['errors']['adresse_annonce']; ?></div>
@@ -147,52 +157,25 @@ ob_start();
 					</div>
 
 					<!-- informatique -->
-					
-						<div class="form-floating mb-3" style="display: none;" id="etat">
-						<button style="float: right" type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-placement="top" title="Guide de l'état" data-bs-target="#guideEtats">?</button>
-
-							<select class="form-select" name="critere_etat">
-								<option value="Neuf">Neuf</option>
-								<option value="Très bon état">Très bon état</option>
-								<option value="Bon état">Bon état</option>
-								<option value="Etat satisfaisant">Etat satisfaisant</option>
-								<option value="Pour pièces">Pour pièces</option>
-							</select><label for="etat">Etat </label>
-
-						</div>
-					
-					
-					
-
-				</div>
-			</div>
-			<!--Modale guide des états-->
-			<div class="modal" id="guideEtats" tabindex="-1">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">Guide de l'état du bien à vendre</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<ul>
-								<li><strong>État neuf : </strong>Bien non-utilisé, complet, avec emballage non ouvert et notice(s) d’utilisation.</li>
-								<li><strong>Très bon état : </strong>Bien pas ou peu utilisé, sans aucun défaut ni rayure, complet et en parfait état de fonctionnement.</li>
-								<li><strong>Bon état : </strong>Bien en parfait état de fonctionnement, comportant quelques petits défauts (mentionnés
-									dans l’annonce et visibles sur les photos).</li>
-								<li><strong>État satisfaisant : </strong>Bien en état de fonctionnement correct, comportant des défauts et signes d’usure
-									manifestes (mentionnés dans l’annonce et visibles sur les photos).</li>
-								<li><strong>Pour pièces : </strong>Bien non fonctionnel, pour restauration complète ou récupération de pièces détachées.</li>
-							</ul>
-						</div>
-
-						<div class="modal-footer">
-							<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fermer</button>
+					<div class="" style="display: none;" id="etat">
+						<div class="row align-items-center">
+							<div class="col-2">
+								<a href="#" data-bs-toggle="modal" data-bs-target="#helpModal"><i class="fas fa-question-circle"></i></a>
+							</div>
+							<div class="col-10 form-floating mb-3">
+								<select class="form-select" name="critere_etat">
+									<option value="Neuf">Neuf</option>
+									<option value="Très bon état">Très bon état</option>
+									<option value="Bon état">Bon état</option>
+									<option value="Etat satisfaisant">Etat satisfaisant</option>
+									<option value="Pour pièces">Pour pièces</option>
+								</select><label for="etat">Etat</label>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!--Fin modale guide des états-->
+
 
 
 			<div class="row justify-content-center">
@@ -243,6 +226,37 @@ ob_start();
 	// first update if errors on form
 	updateCategories();
 </script>
+
+
+
+
+<!--Modale guide des états-->
+<div class="modal" id="helpModal" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Guide de l'état du bien à vendre</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<ul>
+					<li><strong>État neuf : </strong>Bien non-utilisé, complet, avec emballage non ouvert et notice(s) d’utilisation.</li>
+					<li><strong>Très bon état : </strong>Bien pas ou peu utilisé, sans aucun défaut ni rayure, complet et en parfait état de fonctionnement.</li>
+					<li><strong>Bon état : </strong>Bien en parfait état de fonctionnement, comportant quelques petits défauts (mentionnés
+						dans l’annonce et visibles sur les photos).</li>
+					<li><strong>État satisfaisant : </strong>Bien en état de fonctionnement correct, comportant des défauts et signes d’usure
+						manifestes (mentionnés dans l’annonce et visibles sur les photos).</li>
+					<li><strong>Pour pièces : </strong>Bien non fonctionnel, pour restauration complète ou récupération de pièces détachées.</li>
+				</ul>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fermer</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Fin modale guide des états-->
 
 <?php
 $content = ob_get_clean();

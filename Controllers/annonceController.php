@@ -7,7 +7,7 @@ function searchAnnonces()
     global $annonceModel;
     // les annonces d'une categorie, les annonces d'un user ou une recherche passent par la méthode search du modele
     $annoncesList = $annonceModel->searchAnnonces();
-    require_once (__DIR__ . '/../Views/listAnnoncesView.php');
+    require_once (__DIR__ . '/../Views/searchView.php');
     exit();
 }
 

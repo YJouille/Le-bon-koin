@@ -68,7 +68,6 @@ class AnnonceModel extends Database
         }
         return $annonce;
     }
-
     
     // list all annonces, search without critere
     // search annonces

@@ -9,13 +9,19 @@
 .list-annonces{
   display: block;
   height: calc(100vh - 300px);
-  margin: 50px;
+  margin: 15px;
   overflow-y: auto;
 }
 .new-annonce{
   display: block;
   height: calc(100vh - 300px);
-  margin: 50px;
+  margin: 15px;
+  overflow-y: auto;
+}
+.search-annonce{
+  display: block;
+  height: calc(100vh - 300px);
+  margin: 15px;
   overflow-y: auto;
 }
 
@@ -2685,9 +2691,7 @@ textarea.form-control-lg {
 }
 .form-floating > .form-control,
 .form-floating > .form-select {
-  /*Reduce height of form inputs height */
-  height: 4rem;
-  /* height: 5.5rem; */
+  height: 5.5rem;
   line-height: 1.25;
 }
 .form-floating > label {
