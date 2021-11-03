@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le : mer. 03 nov. 2021 à 22:48
--- Version du serveur : 5.7.36-0ubuntu0.18.04.1
--- Version de PHP : 7.4.25
+-- Hôte : localhost:3306
+-- Généré le : mer. 03 nov. 2021 à 22:11
+-- Version du serveur : 5.7.33
+-- Version de PHP : 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -55,7 +55,31 @@ INSERT INTO `annonce` (`id_annonce`, `titre_annonce`, `desc_annonce`, `prix_anno
 (27, 'Appartement 35m2', 'Appartement 4 pièces, quartier très calme. Libre début décembre.', '300', '39110 - LA CHAPELLE SUR FURIEUSE', 1, 3),
 (28, 'Caravane', 'Caravane de 6m2 ( 2m 50 de haut ) avec eau, électricité et chauffage ', '10000', '39110 - LA CHAPELLE SUR FURIEUSE onay rue du chateau d\'eau ', 2, 3),
 (31, 'Gameboy color', 'fdsfsd sfsf ', '3', '21000 - DIJON', 31, 3),
-(32, 'Gameboy color', 'fdsfsd sfsf ', '3', '21000 - DIJON', 31, 3);
+(32, 'Gameboy color', 'fdsfsd sfsf ', '3', '21000 - DIJON', 31, 3),
+(39, 'IPhone', 'Iphone 7', '750', '25110 - BRETIGNEY NOTRE DAME', 33, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categorie`
+--
+
+CREATE TABLE `categorie` (
+  `id_categorie` int(11) NOT NULL,
+  `libelle_categorie` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `categorie`
+--
+
+INSERT INTO `categorie` (`id_categorie`, `libelle_categorie`) VALUES
+(1, 'Ventes immobilières'),
+(2, 'Voitures'),
+(3, 'Multimédia'),
+(31, 'Informatique'),
+(32, 'Consoles & Jeux vidéo'),
+(33, 'Téléphonie');
 
 -- --------------------------------------------------------
 
@@ -125,7 +149,34 @@ INSERT INTO `critere` (`id_critere`, `id_annonce`, `nom_critere`, `valeur_criter
 (85, 28, 'puissance', '250'),
 (86, 28, 'nb-de-places', '6'),
 (89, 31, 'etat', 'Neuf'),
-(90, 32, 'etat', 'Neuf');
+(90, 32, 'etat', 'Neuf'),
+(105, 39, 'marque', 'Apple'),
+(106, 39, 'modele', 'IPhone'),
+(107, 39, 'couleur', 'Bleu'),
+(108, 39, 'capacite-de-stockage', '25'),
+(109, 39, 'etat', 'Bon état');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+CREATE TABLE `user` (
+  `id_user` int(11) NOT NULL,
+  `nom_user` varchar(255) NOT NULL,
+  `email_user` varchar(255) NOT NULL,
+  `pwd_user` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id_user`, `nom_user`, `email_user`, `pwd_user`) VALUES
+(1, 'Bob', 'bob@server.fr', 'tagada'),
+(3, 'root', 'root', '$2y$10$4ZerxQLWrN6RYJJk9z3ZL.36YtqFlfynlAUcZLyH8Z6uwHiSj.9d6'),
+(4, 'yamina', 'y.j.39110@gmail.com', '$2y$10$4WRkJcRzW5Jyzpmf2RGeXuUWpjpz15LijE4vJrAITOFi7JohEf6uG');
 
 --
 -- Index pour les tables déchargées
@@ -140,11 +191,23 @@ ALTER TABLE `annonce`
   ADD KEY `id_categorie` (`id_categorie`);
 
 --
+-- Index pour la table `categorie`
+--
+ALTER TABLE `categorie`
+  ADD PRIMARY KEY (`id_categorie`);
+
+--
 -- Index pour la table `critere`
 --
 ALTER TABLE `critere`
   ADD PRIMARY KEY (`id_critere`),
   ADD KEY `id_annonce` (`id_annonce`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -154,13 +217,25 @@ ALTER TABLE `critere`
 -- AUTO_INCREMENT pour la table `annonce`
 --
 ALTER TABLE `annonce`
-  MODIFY `id_annonce` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_annonce` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT pour la table `categorie`
+--
+ALTER TABLE `categorie`
+  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT pour la table `critere`
 --
 ALTER TABLE `critere`
-  MODIFY `id_critere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id_critere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées
