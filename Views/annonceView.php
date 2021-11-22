@@ -102,7 +102,47 @@ $criteresNames = [
 				<iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDVpf8cNScpvRrJzvbhjjkIuA_blKGFPlQ&q=<?= str_replace(' ', '+', $annonce['adresse_annonce']) ?>" width="100%" height="450" style="border: 0;" allowfullscreen="" loading="lazy"></iframe>
 			</div>
 		</div>
-		
+
+		<!-- Wrapper container -->
+		<div class="container py-4">
+
+			<!-- Bootstrap 5 starter form -->
+			<form id="contactForm" data-sb-form-api-token="API_TOKEN">
+			
+				<!-- Email address input -->
+				<div class="mb-3">
+					<label class="form-label" for="emailAddress">Email Address</label>
+					<input class="form-control" id="emailAddress" type="email" placeholder="Email Address" data-sb-validations="required, email" />
+					<div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
+					<div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
+				</div>
+
+				<!-- Message input -->
+				<div class="mb-3">
+					<label class="form-label" for="message">Message</label>
+					<textarea class="form-control" id="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations="required"></textarea>
+					<div class="invalid-feedback" data-sb-feedback="message:required">Message is required.</div>
+				</div>
+
+				<!-- Form submissions success message -->
+				<div class="d-none" id="submitSuccessMessage">
+					<div class="text-center mb-3">Form submission successful!</div>
+				</div>
+
+				<!-- Form submissions error message -->
+				<div class="d-none" id="submitErrorMessage">
+					<div class="text-center text-danger mb-3">Error sending message!</div>
+				</div>
+
+				<!-- Form submit button -->
+				<div class="d-grid">
+					<button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button>
+				</div>
+
+			</form>
+
+		</div>
+
 	</div>
 
 </section>
